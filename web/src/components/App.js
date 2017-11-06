@@ -4,6 +4,7 @@ import { Route, withRouter } from 'react-router-dom';
 import NavContainer from './NavContainer';
 import FooterContainer from './FooterContainer';
 import DefaultView from './DefaultView';
+import CategoryView from './CategoryView';
 import { fetchPosts } from '../actions/posts';
 
 class App extends Component {
@@ -24,6 +25,8 @@ class App extends Component {
         <div className="wrapper">
             <div className="container-fluid">
                 <Route exact path="/" component={DefaultView} />
+
+                <Route exact path="/category/:categoryId" component={CategoryView} />
             </div>
         </div>
 

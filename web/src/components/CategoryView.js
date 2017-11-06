@@ -1,38 +1,30 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import CategoryContainer from './CategoryContainer';
 import CategoryLinkContainer from './CategoryLinkContainer';
 import SortingContainer from './SortingContainer';
 
-class DefaultView extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedCategory: null
-        };
-    }
+class CategoryOverview extends Component {
+    state = {  }
 
     render() {
-        const { categories } = this.props;
-        
+        const {cat} = this.props;
+
         return (
             <div className="m-t-15">
                 <CategoryLinkContainer />
 
                 <SortingContainer />
 
-                {categories.map((cat) => (
-                    <CategoryContainer
-                        key={cat.name}
-                        cat={cat}
-                    />
-                ))}
+                <CategoryContainer
+                    cat={cat}
+                />
             </div>
         );
     }
 }
 
-function mapStateToProps ({ form, posts, categories, comments, sortBy }) {
+function mapStateToProps ({ posts, categories, sortBy }, ownProps) {
     const propsObject = {
         posts: Object.keys(posts.list).reduce((arr, e) => {
             arr.push(posts.list[e]);
@@ -42,6 +34,8 @@ function mapStateToProps ({ form, posts, categories, comments, sortBy }) {
             arr.push(categories[e]);
             return arr;
         }, []),
+        sortBy: sortBy,
+        cat: ownProps.cat ? ownProps.cat : categories[ownProps.match.params['categoryId']]
     };
     return propsObject;
 }
@@ -51,7 +45,4 @@ function mapDispatchToProps (dispatch) {
     };
 }
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(DefaultView);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryOverview);
