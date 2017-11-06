@@ -1,0 +1,1 @@
+export const ToReadableDate = (timestamp) => new Date(timestamp).toLocaleString('en-UK');

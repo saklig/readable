@@ -7,3 +7,32 @@ const headers = {
 };
 
 export const fetchPosts = () => fetch(`${api}/posts`, { headers });
+
+export const addPost = (post) => {
+    return fetch(`${api}/posts`, {
+        headers,
+        method: 'post',
+        body: JSON.stringify(post)
+    });
+};
+
+export const removePost = (id) => {
+    fetch(`${api}/posts/${id}`, {
+        headers,
+        method: 'delete'
+    });
+};
+
+export const upVotePost = (id) =>
+fetch(`${api}/posts/${id}`, {
+    headers,
+    method: 'post',
+    body: JSON.stringify({option: 'upVote'})
+});
+
+export const downVotePost = (id) =>
+fetch(`${api}/posts/${id}`, {
+    headers,
+    method: 'post',
+    body: JSON.stringify({option: 'downVote'})
+}); 
