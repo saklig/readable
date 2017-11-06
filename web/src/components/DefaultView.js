@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CategoryContainer from './CategoryContainer';
+import CategoryLinkContainer from './CategoryLinkContainer';
 
 class DefaultView extends Component {
     constructor(props) {
@@ -15,13 +16,15 @@ class DefaultView extends Component {
         
         return (
             <div className="m-t-15">
-            {categories.map((cat) => (
-                <CategoryContainer
-                    key={cat.name}
-                    cat={cat}
-                />
-            ))}
-        </div>
+                <CategoryLinkContainer />
+
+                {categories.map((cat) => (
+                    <CategoryContainer
+                        key={cat.name}
+                        cat={cat}
+                    />
+                ))}
+            </div>
         );
     }
 }
