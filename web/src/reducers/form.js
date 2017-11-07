@@ -1,4 +1,5 @@
-import { ADD_POST, RECEIVE_POST } from '../actions/posts';
+import { POST_ADDED, ADD_POST, RECEIVE_POST } from '../actions/posts';
+import { RECEIVE_COMMENT } from '../actions/comments';
 import { RESET_FORM, UPDATE_POST_FORM, UPDATE_COMMENT_FORM } from '../actions/form';
 
 const initialPostState = {
@@ -40,6 +41,11 @@ function form (state = initialPostState, action){
         };
     case RESET_FORM:
         return initialPostState;
+    case POST_ADDED:
+        return {
+            ...state,
+            postAdded: true
+        };
     case ADD_POST:
         return {
             ...state,
@@ -49,6 +55,11 @@ function form (state = initialPostState, action){
         return {
             ...state,
             post: action.selectedpost
+        };
+    case RECEIVE_COMMENT:
+        return {
+            ...state,
+            comment: action.comment
         };
     default:
         return state;

@@ -8,6 +8,7 @@ export const REMOVE_POST = 'REMOVE_POST';
 export const UPDATE_POST = 'UPDATE_POST';
 export const ADD_VOTE = 'ADD_VOTE';
 export const REMOVE_VOTE = 'REMOVE_VOTE';
+export const POST_ADDED = 'POST_ADDED';
 
 function requestPosts() {
     return {

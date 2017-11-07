@@ -1,4 +1,4 @@
-import { RECEIVE_POSTS, REQUEST_POSTS, REMOVE_POST, ADD_VOTE, REMOVE_VOTE } from '../actions/posts';
+import { ADD_POST, REMOVE_POST, ADD_VOTE, REMOVE_VOTE, REQUEST_POSTS, RECEIVE_POSTS, REQUEST_POST, RECEIVE_POST, UPDATE_POST } from '../actions/posts';
 
 const initialPostState = {
     list: {
@@ -12,27 +12,21 @@ const initialPostState = {
             voteScore: 1,
             deleted: false
         }
-    },
-    isFetching: false,
-    featchedAt: null
+    }
+
 };
 
 function posts (state = initialPostState, action){
     const { post } = action;
-        
+
     switch (action.type) {
-    case REQUEST_POSTS:
-        return {
-            ...state,
-            isFetching: true,
-        };
-    case RECEIVE_POSTS:
+    case ADD_POST:
         return {
             ...state,
             list: {
-                ...action.posts
-            },
-            isFetching: false,
+                ...state.list,
+                [post.id]: post
+            }
         };
     case REMOVE_POST:
         return {
@@ -64,6 +58,39 @@ function posts (state = initialPostState, action){
                 [post.id]: {
                     ...state.list[post.id],
                     voteScore: post.voteScore - 1
+                }
+            }
+        };
+    case REQUEST_POSTS:
+        return {
+            ...state
+        };
+    case RECEIVE_POSTS:
+        return {
+            ...state,
+            list: {
+                ...action.posts
+            }
+        };
+    case REQUEST_POST:
+        return {
+            ...state
+        };
+    case RECEIVE_POST:
+        return {
+            ...state
+            ,
+            selectedpost: {
+                ...action.selectedpost
+            }
+        };
+    case UPDATE_POST:
+        return {
+            ...state,
+            list: {
+                ...state.list,
+                [post.id]: {
+                    ...post
                 }
             }
         };
