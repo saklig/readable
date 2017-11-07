@@ -21,7 +21,7 @@ class CategoryLinkContainer extends Component {
                     <h4 className="card-title">Category links</h4>
                     {categories.map((cat) => {
                         return (
-                            <Link key={cat.name} className="btn btn-primary m-r-10" to={{ pathname: `/category/${cat.name}`}}>{cat.name}</Link>
+                            <Link key={cat.name} className="btn btn-primary m-r-10" to={{ pathname: `/${cat.name}`}}>{cat.name}</Link>
                         );
                     })}
                 </div>

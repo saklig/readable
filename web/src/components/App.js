@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import NavContainer from './NavContainer';
 import FooterContainer from './FooterContainer';
 import DefaultView from './DefaultView';
@@ -11,6 +12,10 @@ import EditCommentContainer from './EditCommentContainer';
 import PostDetailView from './PostDetailView';
 
 class App extends Component {
+    static propTypes = {
+        fetchPosts: PropTypes.func.isRequired
+    }
+
     constructor(props) {
         super(props);
         this.state = { };
@@ -30,7 +35,7 @@ class App extends Component {
                     <div className="container-fluid">
                         <Route exact path="/" component={DefaultView} />
 
-                        <Route exact path="/category/:categoryId" component={CategoryView} />
+                        <Route exact path="/:categoryId" component={CategoryView} />
 
                         <Route exact path="/posts/new" component={EditPostContainer} />
 
