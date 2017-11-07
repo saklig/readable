@@ -104,7 +104,7 @@ class EditPostContainer extends Component {
                         </div>
 
                         <button type="submit" className="btn btn-primary">
-                            <icon className="mdi mdi-plus" /> {post.id ? 'Edit post' : 'Add post'}
+                            <span className="mdi mdi-plus" /> {post.id ? 'Edit post' : 'Add post'}
                         </button>
                     </div>
                 </div>

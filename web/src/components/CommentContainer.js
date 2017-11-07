@@ -19,15 +19,15 @@ class CommentContainer extends Component {
                 <Link className="btn btn-primary m-r-10" to={{ pathname: `/comment/edit/${comment.id}`}}>Edit</Link>
 
                 <button className="btn btn-danger" onClick={() => handleRemoveComment({comment: comment})}>
-                    <icon className="mdi mdi-delete" /> delete
+                    <span className="mdi mdi-delete" /> delete
                 </button>
 
                 <button className="btn btn-primary" onClick={() => handleCommentAddVote({comment: comment})}>
-                    <icon className="mdi mdi-thumb-up" />
+                    <span className="mdi mdi-thumb-up" />
                 </button>
                 <span className="badge badge-success">{comment.voteScore}</span>
                 <button className="btn btn-primary" onClick={() => handleCommentRemoveVote({comment: comment})}>
-                    <icon className="mdi mdi-thumb-down" /> 
+                    <span className="mdi mdi-thumb-down" /> 
                 </button>
             </div>
         );

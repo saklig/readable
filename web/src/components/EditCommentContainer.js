@@ -56,7 +56,7 @@ class EditCommentContainer extends Component {
                     <input type="text" className="form-control col-lg-4" placeholder="name" name="author" value={comment.author} onChange={(event) => this.handleInputChange(event)} />
                     <textarea className="form-control col-lg-4" placeholder="comment" rows="4" name="body" value={comment.body} onChange={(event) => this.handleInputChange(event)} />
                     <button type="submit" className="btn btn-primary">
-                        <icon className="mdi mdi-plus" /> {comment.id ? 'Edit comment' : 'Add comment'}
+                        <span className="mdi mdi-plus" /> {comment.id ? 'Edit comment' : 'Add comment'}
                     </button>
                 </div>
             </form>
