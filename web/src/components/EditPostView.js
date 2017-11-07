@@ -7,7 +7,7 @@ import { addPost, fetchPost, updatePost } from '../actions/posts';
 import { resetForm, updatePostForm } from '../actions/form';
 
 
-class EditPostContainer extends Component {
+class EditPostView extends Component {
     static propTypes = {
         categories: PropTypes.array.isRequired,
         postId: PropTypes.string.isRequired,
@@ -153,4 +153,4 @@ function mapDispatchToProps (dispatch) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(EditPostContainer);
+)(EditPostView);

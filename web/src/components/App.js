@@ -6,7 +6,7 @@ import NavContainer from './NavContainer';
 import FooterContainer from './FooterContainer';
 import DefaultView from './DefaultView';
 import CategoryView from './CategoryView';
-import EditPostContainer from './EditPostContainer';
+import EditPostView from './EditPostView';
 import { fetchPosts } from '../actions/posts';
 import EditCommentContainer from './EditCommentContainer';
 import PostDetailView from './PostDetailView';
@@ -37,9 +37,9 @@ class App extends Component {
 
                         <Route exact path="/:categoryId" component={CategoryView} />
 
-                        <Route exact path="/posts/new" component={EditPostContainer} />
+                        <Route exact path="/posts/new" component={EditPostView} />
 
-                        <Route exact path="/posts/edit/:postId" component={EditPostContainer} />
+                        <Route exact path="/posts/edit/:postId" component={EditPostView} />
 
                         <Route exact path="/posts/detail/:postId" component={PostDetailView} />
 
