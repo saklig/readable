@@ -7,6 +7,8 @@ import DefaultView from './DefaultView';
 import CategoryView from './CategoryView';
 import EditPostContainer from './EditPostContainer';
 import { fetchPosts } from '../actions/posts';
+import EditCommentContainer from './EditCommentContainer';
+import PostDetailContainer from './PostDetailContainer';
 
 class App extends Component {
   constructor(props) {
@@ -20,26 +22,30 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <NavContainer />
+        <div className="App">
+            <NavContainer />
 
-        <div className="wrapper">
-            <div className="container-fluid">
-                <Route exact path="/" component={DefaultView} />
+            <div className="wrapper">
+                <div className="container-fluid">
+                    <Route exact path="/" component={DefaultView} />
 
-                <Route exact path="/category/:categoryId" component={CategoryView} />
+                    <Route exact path="/category/:categoryId" component={CategoryView} />
 
-                <Route exact path="/posts/new" component={EditPostContainer} />
-                        
-                <Route exact path="/posts/edit/:postId" component={EditPostContainer} />
+                    <Route exact path="/posts/new" component={EditPostContainer} />
+
+                    <Route exact path="/posts/edit/:postId" component={EditPostContainer} />
+
+                    <Route exact path="/posts/detail/:postId" component={PostDetailContainer} />
+
+                    <Route exact path="/comment/edit/:commentId" component={EditCommentContainer} />
+                </div>
             </div>
+
+            <FooterContainer/>
+
         </div>
-
-        <FooterContainer/>
-
-      </div>
-    );
-  }
+        );
+    }
 }
 
 function mapStateToProps ({ posts, categories }) {
