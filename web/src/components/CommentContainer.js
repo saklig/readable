@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addComment, removeComment, addCommentVote, removeCommentVote } from '../actions/commentActions';
+import { addComment, removeComment, addCommentVote, removeCommentVote } from '../actions/comments';
 import { ToReadableDate } from '../utils/DateHelper';
 import { Link } from 'react-router-dom';
 
