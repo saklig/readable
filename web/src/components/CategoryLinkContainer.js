@@ -30,7 +30,7 @@ class CategoryLinkContainer extends Component {
     }
 }
 
-function mapStateToProps ({ categories }) {
+function mapStateToProps ({ categories }, ownProps) {
     return {
         categories: Object.keys(categories).reduce((arr, e) => {
             arr.push(categories[e]);

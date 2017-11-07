@@ -11,44 +11,45 @@ import EditCommentContainer from './EditCommentContainer';
 import PostDetailContainer from './PostDetailContainer';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { };
-  }
+    constructor(props) {
+        super(props);
+        this.state = { };
+    }
 
-  componentDidMount(){
-    this.props.fetchPosts();
-  }
+    componentDidMount(){
+        this.props.fetchPosts();
+    }
 
-  render() {
-    return (
-        <div className="App">
-            <NavContainer />
+    render() {
+        return (
+            <div className="App">
+                
+                <NavContainer />
 
-            <div className="wrapper">
-                <div className="container-fluid">
-                    <Route exact path="/" component={DefaultView} />
+                <div className="wrapper">
+                    <div className="container-fluid">
+                        <Route exact path="/" component={DefaultView} />
 
-                    <Route exact path="/category/:categoryId" component={CategoryView} />
+                        <Route exact path="/category/:categoryId" component={CategoryView} />
 
-                    <Route exact path="/posts/new" component={EditPostContainer} />
+                        <Route exact path="/posts/new" component={EditPostContainer} />
 
-                    <Route exact path="/posts/edit/:postId" component={EditPostContainer} />
+                        <Route exact path="/posts/edit/:postId" component={EditPostContainer} />
 
-                    <Route exact path="/posts/detail/:postId" component={PostDetailContainer} />
+                        <Route exact path="/posts/detail/:postId" component={PostDetailContainer} />
 
-                    <Route exact path="/comment/edit/:commentId" component={EditCommentContainer} />
+                        <Route exact path="/comment/edit/:commentId" component={EditCommentContainer} />
+                    </div>
                 </div>
+
+                <FooterContainer/>
+
             </div>
-
-            <FooterContainer/>
-
-        </div>
         );
     }
 }
 
-function mapStateToProps ({ posts, categories }) {
+function mapStateToProps (state, ownProps) {
     return {
 
     };

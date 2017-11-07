@@ -42,7 +42,7 @@ class PostOverview extends Component {
     }
 }
 
-function mapStateToProps ({ categories }) {
+function mapStateToProps ({ categories }, ownProps) {
     const propsObject = {
         categories: Object.keys(categories).reduce((arr, e) => {
             arr.push(categories[e]);

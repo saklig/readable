@@ -37,7 +37,7 @@ class SortingContainer extends Component {
     }
 }
 
-function mapStateToProps ({ sortBy }) {
+function mapStateToProps ({ sortBy }, ownProps) {
     return {
         sortBy: sortBy
     };
