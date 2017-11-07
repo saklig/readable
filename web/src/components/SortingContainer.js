@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import { changeSorting } from '../actions/others';
 
 class SortingContainer extends Component {
-    state = {  }
+    static propTypes = {
+        sortBy: PropTypes.string.isRequired,
+        changeSorting: PropTypes.func.isRequired
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = { };
+    }
 
     handleSortChange = (event) => {
         this.props.changeSorting(event.target.value);
@@ -29,10 +38,9 @@ class SortingContainer extends Component {
 }
 
 function mapStateToProps ({ sortBy }) {
-    const propsObject = {
+    return {
         sortBy: sortBy
     };
-    return propsObject;
 }
   
 function mapDispatchToProps (dispatch) {

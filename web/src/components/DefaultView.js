@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import CategoryContainer from './CategoryContainer';
 import CategoryLinkContainer from './CategoryLinkContainer';
 import SortingContainer from './SortingContainer';
 import { resetForm } from '../actions/form';
-import { changeSorting } from '../actions/others';
 
 class PostOverview extends Component {
+    static propTypes = {
+        categories: PropTypes.array.isRequired,
+        resetForm: PropTypes.func.isRequired
+    }
+
     constructor(props) {
         super(props);
-        this.state = {
-            selectedCategory: null
-        };
+        this.state = { };
     }
 
     componentDidMount(){
@@ -39,30 +42,19 @@ class PostOverview extends Component {
     }
 }
 
-function mapStateToProps ({ form, posts, categories, comments, sortBy }) {
+function mapStateToProps ({ categories }) {
     const propsObject = {
-        posts: Object.keys(posts.list).reduce((arr, e) => {
-            arr.push(posts.list[e]);
-            return arr;
-        }, []),
         categories: Object.keys(categories).reduce((arr, e) => {
             arr.push(categories[e]);
             return arr;
-        }, []),
-        comments: Object.keys(comments).reduce((arr, e) => {
-            arr.push(comments[e]);
-            return arr;
-        }, []),
-        isPostAdded: form.postAdded,
-        sortBy: sortBy
+        }, [])
     };
     return propsObject;
 }
   
 function mapDispatchToProps (dispatch) {
     return {
-        resetForm: () => dispatch(resetForm()),
-        changeSorting: (sortBy) => dispatch(changeSorting(sortBy))
+        resetForm: () => dispatch(resetForm())
     };
 }
 

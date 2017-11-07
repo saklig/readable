@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import PostContainer from './PostContainer';
 
 class CategoryContainer extends Component {
-    state = {  }
+    static propTypes = {
+        cat: PropTypes.object.isRequired,
+        posts: PropTypes.array.isRequired,
+        sortBy: PropTypes.string.isRequired
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = { };
+    }
 
     render() {
-        const {cat,posts,sortBy} = this.props;
+        const { cat, posts, sortBy } = this.props;
 
         return (
             <div>
@@ -27,30 +37,19 @@ class CategoryContainer extends Component {
     }
 }
 
-function mapStateToProps ({ form, posts, categories, comments, sortBy }, ownProps) {
+function mapStateToProps ({ posts, categories, sortBy }, ownProps) {
     return {
         posts: Object.keys(posts.list).reduce((arr, e) => {
             arr.push(posts.list[e]);
             return arr;
         }, []),
-        categories: Object.keys(categories).reduce((arr, e) => {
-            arr.push(categories[e]);
-            return arr;
-        }, []),
-        comments: Object.keys(comments).reduce((arr, e) => {
-            arr.push(comments[e]);
-            return arr;
-        }, []),
-        isPostAdded: form.postAdded,
         sortBy: sortBy,
         cat: ownProps.cat ? ownProps.cat : categories[ownProps.match.params['categoryId']]
     };
 }
   
 function mapDispatchToProps (dispatch) {
-    return {
-        
-    };
+    return { };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryContainer);

@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { removePost } from '../actions/posts';
+import PropTypes from 'prop-types';
 import PostContainer from './PostContainer';
 import CommentList from './CommentList';
 
 class PostDetailContainer extends Component {
-    state = {  }    
+    static propTypes = {
+        post: PropTypes.object.isRequired
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = { };
+    }
 
     render() {
         const {post} = this.props;
@@ -18,7 +25,7 @@ class PostDetailContainer extends Component {
         }
 
         return (
-            <div className="card m-b-20 text-xs-center p-b-20">
+            <div className="card m-b-20 text-xs-center m-t-15">
                 <PostContainer
                     post={post}
                 />
@@ -40,9 +47,7 @@ function mapStateToProps ({posts}, ownProps) {
 }
   
 function mapDispatchToProps (dispatch) {
-    return {
-        removePost: (post) => dispatch(removePost(post))
-    };
+    return { };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostDetailContainer);

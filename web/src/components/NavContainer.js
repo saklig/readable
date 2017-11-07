@@ -6,6 +6,7 @@ class NavContainer extends Component {
         super(props);
         this.state = { };
     }
+    
     render() {
         return (
             <header id="topnav">

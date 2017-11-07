@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {removePost, addVote, removeVote} from '../actions/posts';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { removePost, addVote, removeVote } from '../actions/posts';
 
 class PostActions extends Component {
-    state = {  }
+    static propTypes = {
+        post: PropTypes.object.isRequired,
+        addVote: PropTypes.func.isRequired,
+        removeVote: PropTypes.func.isRequired,
+        removePost: PropTypes.func.isRequired
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = { };
+    }
+
     render() {
         const { post, addVote, removeVote, removePost} = this.props;
         return (

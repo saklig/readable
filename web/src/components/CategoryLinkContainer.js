@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class CategoryLinkContainer extends Component {
-    state = {  }
+    static propTypes = {
+        categories: PropTypes.array.isRequired
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = { };
+    }
+
     render() {
-        const {categories} = this.props;
+        const { categories } = this.props;
         return (
             <div className="card m-b-20 text-xs-center">                
                 <div className="card-body">
@@ -21,7 +30,7 @@ class CategoryLinkContainer extends Component {
     }
 }
 
-function mapStateToProps ({categories}, ownProps) {
+function mapStateToProps ({ categories }) {
     return {
         categories: Object.keys(categories).reduce((arr, e) => {
             arr.push(categories[e]);
@@ -31,9 +40,7 @@ function mapStateToProps ({categories}, ownProps) {
 }
   
 function mapDispatchToProps (dispatch) {
-    return {
-        
-    };
+    return { };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryLinkContainer);

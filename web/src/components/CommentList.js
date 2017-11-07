@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import CommentContainer from './CommentContainer';
 import EditCommentContainer from './EditCommentContainer';
 import { fetchComments } from '../actions/comments';
 
 class CommentList extends Component {
+    static propTypes = {
+        comments: PropTypes.array.isRequired,
+        post: PropTypes.object.isRequired,
+        fetchComments: PropTypes.func.isRequired
+    }
+
     constructor(props) {
         super(props);
         this.state = { };

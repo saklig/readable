@@ -50,14 +50,7 @@ class App extends Component {
 
 function mapStateToProps ({ posts, categories }) {
     return {
-        posts: Object.keys(posts).reduce((arr, e) => {
-            arr.push(posts[e]);
-            return arr;
-        }, []),
-        categories: Object.keys(categories).reduce((arr, e) => {
-            arr.push(categories[e]);
-            return arr;
-        }, [])
+
     };
 }
   

@@ -1,14 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import uuid from 'uuid';
 import { addPost, fetchPost, updatePost } from '../actions/posts';
 import { resetForm, updatePostForm } from '../actions/form';
-import uuid from 'uuid';
+
 
 class EditPostContainer extends Component {
+    static propTypes = {
+        categories: PropTypes.array.isRequired,
+        postId: PropTypes.string.isRequired,
+        post: PropTypes.object.isRequired,
+        addPost: PropTypes.func.isRequired,
+        fetchPost: PropTypes.func.isRequired,
+        updatePostForm: PropTypes.func.isRequired,
+        resetForm: PropTypes.func.isRequired,
+        updatePost: PropTypes.func.isRequired
+    }
+
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = { };
     }
 
     componentDidMount(){
@@ -57,7 +70,6 @@ class EditPostContainer extends Component {
 
         if (isPostAdded) {
             return (
-                // <Redirect to={{pathname: `/posts/${post.id}`}} />
                 <Redirect to={{pathname: '/'}} />
             );
         }
@@ -113,21 +125,13 @@ class EditPostContainer extends Component {
     }
 }
 
-function mapStateToProps ({ form, posts, categories, comments }, ownProps) {
+function mapStateToProps ({ form, categories }, ownProps) {
     return {
-        posts: Object.keys(posts.list).reduce((arr, e) => {
-            arr.push(posts.list[e]);
-            return arr;
-        }, []),
         categories: Object.keys(categories).reduce((arr, e) => {
             arr.push(categories[e]);
             return arr;
         }, []),
-        comments: Object.keys(comments).reduce((arr, e) => {
-            arr.push(comments[e]);
-            return arr;
-        }, []),
-        postId: ownProps.match.params.postId,
+        postId: ownProps.match.params.postId || '',
         post: form.post,
         isPostAdded: form.postAdded
     };

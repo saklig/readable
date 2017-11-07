@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import PostActions from './PostActions';
 import { ToReadableDate } from '../utils/DateHelper';
 
 class PostContainer extends Component {
+    static propTypes = {
+        post: PropTypes.object.isRequired
+    }
+
     constructor(props) {
         super(props);
         this.state = { };
@@ -29,4 +34,16 @@ class PostContainer extends Component {
     }
 }
 
-export default PostContainer;
+function mapStateToProps (state, ownProps) {
+    return {
+        post: {
+            ...ownProps.post
+        }
+    };
+}
+  
+function mapDispatchToProps (dispatch) {
+    return { };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostContainer);

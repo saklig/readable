@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addComment, removeComment, addCommentVote, removeCommentVote } from '../actions/comments';
-import { ToReadableDate } from '../utils/DateHelper';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { removeComment, addCommentVote, removeCommentVote } from '../actions/comments';
+import { ToReadableDate } from '../utils/DateHelper';
 
 class CommentContainer extends Component {
+    static propTypes = {
+        comment: PropTypes.object.isRequired,
+        handleRemoveComment: PropTypes.func.isRequired,
+        handleCommentAddVote: PropTypes.func.isRequired,
+        handleCommentRemoveVote: PropTypes.func.isRequired
+    }
+
     constructor(props) {
         super(props);
         this.state = { };
     }
+
     render() {
         const { comment, handleRemoveComment, handleCommentAddVote, handleCommentRemoveVote } = this.props;
         return (
@@ -34,17 +43,8 @@ class CommentContainer extends Component {
     }
 }
 
-function mapStateToProps ({ posts, categories, comments, comment }, ownProps) {
+function mapStateToProps (state, ownProps) {
     return {
-        posts: Object.keys(posts).reduce((arr, e) => {
-            arr.push(posts[e]);
-            return arr;
-        }, []),
-        categories: {...categories},
-        comments: Object.keys(comments).reduce((arr, e) => {
-            arr.push(comments[e]);
-            return arr;
-        }, []),
         comment: {
             ...ownProps.comment
         }
@@ -53,7 +53,6 @@ function mapStateToProps ({ posts, categories, comments, comment }, ownProps) {
   
 function mapDispatchToProps (dispatch) {
     return {
-        handleAddComment: (comment) => dispatch(addComment(comment)),
         handleRemoveComment: (comment) => dispatch(removeComment(comment)),
         handleCommentAddVote: (comment) => dispatch(addCommentVote(comment)),
         handleCommentRemoveVote: (comment) => dispatch(removeCommentVote(comment))

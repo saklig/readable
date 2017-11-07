@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 
 class FooterContainer extends Component {
-    state = {  }
+    constructor(props) {
+        super(props);
+        this.state = { };
+    }
+    
     render() {
         return (
             <footer className="footer">

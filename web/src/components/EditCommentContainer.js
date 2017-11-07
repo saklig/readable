@@ -1,11 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import uuid from 'uuid';
 import { resetForm, updateCommentForm } from '../actions/form';
 import { updateComment, fetchComment, addComment } from '../actions/comments';
-import uuid from 'uuid';
 
 class EditCommentContainer extends Component {
-    state = {  }
+    static propTypes = {
+        post: PropTypes.object.isRequired,
+        comment: PropTypes.object.isRequired,
+        commentId: PropTypes.string.isRequired,
+        updateComment: PropTypes.func.isRequired,
+        updateCommentForm: PropTypes.func.isRequired,
+        resetForm: PropTypes.func.isRequired,
+        fetchComment: PropTypes.func.isRequired,
+        addComment: PropTypes.func.isRequired
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = { };
+    }
 
     componentDidMount(){
         const { resetForm, commentId, fetchComment, comment } = this.props;
@@ -64,14 +79,10 @@ class EditCommentContainer extends Component {
     }
 }
 
-function mapStateToProps ({ form, comments }, ownProps) {
+function mapStateToProps ({ form }, ownProps) {
     return {
-        comments: Object.keys(comments).reduce((arr, e) => {
-            arr.push(comments[e]);
-            return arr;
-        }, []),
-        post: ownProps.post,
-        commentId: ownProps.match ? ownProps.match.params['commentId'] : undefined,
+        post: ownProps.post || {},
+        commentId: ownProps.match ? ownProps.match.params['commentId'] : '',
         comment: form.comment || {}
     };
 }
