@@ -12,6 +12,8 @@ class EditPostContainer extends Component {
         categories: PropTypes.array.isRequired,
         postId: PropTypes.string.isRequired,
         post: PropTypes.object.isRequired,
+        isPostAdded: PropTypes.bool.isRequired,
+        isPostUpdated: PropTypes.bool.isRequired,
         addPost: PropTypes.func.isRequired,
         fetchPost: PropTypes.func.isRequired,
         updatePostForm: PropTypes.func.isRequired,
@@ -66,9 +68,9 @@ class EditPostContainer extends Component {
 
 
     render() {
-        const { post, categories, isPostAdded } = this.props;
+        const { post, categories, isPostAdded, isPostUpdated } = this.props;
 
-        if (isPostAdded) {
+        if (isPostAdded || isPostUpdated) {
             return (
                 <Redirect to={{pathname: '/'}} />
             );
@@ -133,7 +135,8 @@ function mapStateToProps ({ form, categories }, ownProps) {
         }, []),
         postId: ownProps.match.params.postId || '',
         post: form.post,
-        isPostAdded: form.postAdded
+        isPostAdded: form.postAdded,
+        isPostUpdated: form.postUpdated
     };
 }
   

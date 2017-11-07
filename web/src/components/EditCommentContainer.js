@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import uuid from 'uuid';
 import { resetForm, updateCommentForm } from '../actions/form';
 import { updateComment, fetchComment, addComment } from '../actions/comments';
@@ -10,6 +11,7 @@ class EditCommentContainer extends Component {
         post: PropTypes.object.isRequired,
         comment: PropTypes.object.isRequired,
         commentId: PropTypes.string.isRequired,
+        isCommentUpdated: PropTypes.bool.isRequired,
         updateComment: PropTypes.func.isRequired,
         updateCommentForm: PropTypes.func.isRequired,
         resetForm: PropTypes.func.isRequired,
@@ -64,7 +66,14 @@ class EditCommentContainer extends Component {
     }
 
     render() {
-        const { comment } = this.props;
+        const { comment, post, isCommentUpdated } = this.props;
+
+        if (isCommentUpdated) {
+            return (
+                <Redirect to={{pathname: `/posts/detail/${comment.parentId}` }} />
+            );
+        }
+
         return (
             <form onSubmit={this.handleSubmit}>
                 <div className="card-body text-muted">
@@ -83,7 +92,8 @@ function mapStateToProps ({ form }, ownProps) {
     return {
         post: ownProps.post || {},
         commentId: ownProps.match ? ownProps.match.params['commentId'] : '',
-        comment: form.comment || {}
+        comment: form.comment || {},
+        isCommentUpdated: form.commentUpdated
     };
 }
   
