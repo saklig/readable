@@ -6,7 +6,7 @@ import uuid from 'uuid';
 import { resetForm, updateCommentForm } from '../actions/form';
 import { updateComment, fetchComment, addComment } from '../actions/comments';
 
-class EditCommentContainer extends Component {
+class EditCommentView extends Component {
     static propTypes = {
         post: PropTypes.object.isRequired,
         comment: PropTypes.object.isRequired,
@@ -107,4 +107,4 @@ function mapDispatchToProps (dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditCommentContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(EditCommentView);

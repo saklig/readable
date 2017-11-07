@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CommentContainer from './CommentContainer';
-import EditCommentContainer from './EditCommentContainer';
+import EditCommentView from './EditCommentView';
 import { fetchComments } from '../actions/comments';
 
 class CommentList extends Component {
@@ -32,7 +32,7 @@ class CommentList extends Component {
                     />
                 ))}
 
-                <EditCommentContainer post={post} />
+                <EditCommentView post={post} />
             </div>
         );
     }
