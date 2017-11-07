@@ -3,13 +3,20 @@ import { connect } from 'react-redux';
 import CategoryContainer from './CategoryContainer';
 import CategoryLinkContainer from './CategoryLinkContainer';
 import SortingContainer from './SortingContainer';
+import { resetForm } from '../actions/form';
+import { changeSorting } from '../actions/others';
 
-class DefaultView extends Component {
+class PostOverview extends Component {
     constructor(props) {
         super(props);
         this.state = {
             selectedCategory: null
         };
+    }
+
+    componentDidMount(){
+        const { resetForm } = this.props;
+        resetForm();
     }
 
     render() {
@@ -42,16 +49,24 @@ function mapStateToProps ({ form, posts, categories, comments, sortBy }) {
             arr.push(categories[e]);
             return arr;
         }, []),
+        comments: Object.keys(comments).reduce((arr, e) => {
+            arr.push(comments[e]);
+            return arr;
+        }, []),
+        isPostAdded: form.postAdded,
+        sortBy: sortBy
     };
     return propsObject;
 }
   
 function mapDispatchToProps (dispatch) {
     return {
+        resetForm: () => dispatch(resetForm()),
+        changeSorting: (sortBy) => dispatch(changeSorting(sortBy))
     };
 }
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(DefaultView);
+)(PostOverview);
