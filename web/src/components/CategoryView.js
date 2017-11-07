@@ -24,8 +24,8 @@ class CategoryOverview extends Component {
     }
 }
 
-function mapStateToProps ({ posts, categories, sortBy }, ownProps) {
-    const propsObject = {
+function mapStateToProps ({ form, posts, categories, comments, sortBy }, ownProps) {
+    return {
         posts: Object.keys(posts.list).reduce((arr, e) => {
             arr.push(posts.list[e]);
             return arr;
@@ -34,10 +34,14 @@ function mapStateToProps ({ posts, categories, sortBy }, ownProps) {
             arr.push(categories[e]);
             return arr;
         }, []),
+        comments: Object.keys(comments).reduce((arr, e) => {
+            arr.push(comments[e]);
+            return arr;
+        }, []),
+        isPostAdded: form.postAdded,
         sortBy: sortBy,
         cat: ownProps.cat ? ownProps.cat : categories[ownProps.match.params['categoryId']]
     };
-    return propsObject;
 }
   
 function mapDispatchToProps (dispatch) {

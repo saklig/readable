@@ -8,7 +8,7 @@ class CategoryContainer extends Component {
     render() {
         const {cat,posts,sortBy} = this.props;
 
-        return (    
+        return (
             <div>
                 <h1>{cat.name}</h1>
                 {posts.filter((p) => !p.deleted && p.category === cat.name).sort((a,b) => b[sortBy] - a[sortBy]).map((p) => (
@@ -37,8 +37,13 @@ function mapStateToProps ({ form, posts, categories, comments, sortBy }, ownProp
             arr.push(categories[e]);
             return arr;
         }, []),
-        cat: ownProps.cat,
-        sortBy: sortBy
+        comments: Object.keys(comments).reduce((arr, e) => {
+            arr.push(comments[e]);
+            return arr;
+        }, []),
+        isPostAdded: form.postAdded,
+        sortBy: sortBy,
+        cat: ownProps.cat ? ownProps.cat : categories[ownProps.match.params['categoryId']]
     };
 }
   
