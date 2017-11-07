@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import PostActions from './PostActions';
+import { fetchComments } from '../actions/comments';
 import { ToReadableDate } from '../utils/DateHelper';
 
 class PostContainer extends Component {
     static propTypes = {
-        post: PropTypes.object.isRequired
+        post: PropTypes.object.isRequired,
+        comments: PropTypes.array.isRequired,
+        fetchComments: PropTypes.func.isRequired
     }
 
     constructor(props) {
@@ -14,8 +17,13 @@ class PostContainer extends Component {
         this.state = { };
     }
 
+    componentDidMount(){
+        const { fetchComments, post } = this.props;
+        fetchComments(post.id);
+    }
+
     render() {
-        const { post } = this.props;
+        const { post, comments } = this.props;
 
         return (
             <div className="">
@@ -27,6 +35,9 @@ class PostContainer extends Component {
                         <p className="m-t-10">
                             {post.body}
                         </p>
+                        <span className="mdi mdi-comment-outline">
+                            {comments.filter((c) => c.parentId === post.id).length}
+                        </span>
                     </div>
                 </div>
             </div>
@@ -34,16 +45,22 @@ class PostContainer extends Component {
     }
 }
 
-function mapStateToProps (state, ownProps) {
+function mapStateToProps ({ comments }, ownProps) {
     return {
         post: {
             ...ownProps.post
-        }
+        },
+        comments: Object.keys(comments).reduce((arr, e) => {
+            arr.push(comments[e]);
+            return arr;
+        }, []),
     };
 }
   
-function mapDispatchToProps (dispatch) {
-    return { };
+function mapDispatchToProps (dispatch) {    
+    return {
+        fetchComments: (postId) => dispatch(fetchComments(postId))
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostContainer);

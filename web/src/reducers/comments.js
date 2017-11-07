@@ -1,17 +1,6 @@
 import { ADD_COMMENT, REMOVE_COMMENT, PARENT_REMOVE_COMMENT, ADD_COMMENT_VOTE, REMOVE_COMMENT_VOTE, RECEIVE_COMMENTS, UPDATE_COMMENT } from '../actions/comments';
 
-const initialComments = {
-    0: {
-        id: 0,
-        parentId: 1,
-        timestamp: Date.now(),
-        body: 'asdf',
-        author: 'user1',
-        voteScore: 1,
-        deleted: false,
-        parentDeleted: false
-    }
-};
+const initialComments = {};
 
 function comments(state = initialComments, action)
 {
