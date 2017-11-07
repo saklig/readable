@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { resetForm, updateCommentForm } from '../actions/formActions';
-import { updateComment, fetchComment, addComment } from '../actions/commentActions';
+import { resetForm, updateCommentForm } from '../actions/form';
+import { updateComment, fetchComment, addComment } from '../actions/comments';
 import uuid from 'uuid';
 
 class EditCommentContainer extends Component {
