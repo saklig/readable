@@ -8,7 +8,7 @@ import CategoryView from './CategoryView';
 import EditPostContainer from './EditPostContainer';
 import { fetchPosts } from '../actions/posts';
 import EditCommentContainer from './EditCommentContainer';
-import PostDetailContainer from './PostDetailContainer';
+import PostDetailView from './PostDetailView';
 
 class App extends Component {
     constructor(props) {
@@ -36,7 +36,7 @@ class App extends Component {
 
                         <Route exact path="/posts/edit/:postId" component={EditPostContainer} />
 
-                        <Route exact path="/posts/detail/:postId" component={PostDetailContainer} />
+                        <Route exact path="/posts/detail/:postId" component={PostDetailView} />
 
                         <Route exact path="/comment/edit/:commentId" component={EditCommentContainer} />
                     </div>

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import PostContainer from './PostContainer';
 import CommentList from './CommentList';
 
-class PostDetailContainer extends Component {
+class PostDetailView extends Component {
     static propTypes = {
         post: PropTypes.object.isRequired
     }
@@ -50,4 +50,4 @@ function mapDispatchToProps (dispatch) {
     return { };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostDetailContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(PostDetailView);
