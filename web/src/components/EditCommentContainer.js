@@ -66,7 +66,7 @@ class EditCommentContainer extends Component {
     }
 
     render() {
-        const { comment, post, isCommentUpdated } = this.props;
+        const { comment, isCommentUpdated } = this.props;
 
         if (isCommentUpdated) {
             return (
@@ -100,7 +100,7 @@ function mapStateToProps ({ form }, ownProps) {
 function mapDispatchToProps (dispatch) {
     return {
         updateComment: (comment) => dispatch(updateComment(comment)),
-        updateCommentForm: (name, value, post) => dispatch(updateCommentForm(name, value, post)),
+        updateCommentForm: (name, value, comment) => dispatch(updateCommentForm(name, value, comment)),
         resetForm: () => dispatch(resetForm()),
         fetchComment: (commentId) => dispatch(fetchComment(commentId)),
         addComment: (comment) => dispatch(addComment(comment)),
