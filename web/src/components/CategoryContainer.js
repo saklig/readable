@@ -44,7 +44,7 @@ function mapStateToProps ({ posts, categories, sortBy }, ownProps) {
             return arr;
         }, []),
         sortBy: sortBy,
-        cat: ownProps.cat ? ownProps.cat : categories[ownProps.match.params['categoryId']]
+        cat: ownProps.cat ? ownProps.cat : ownProps.match ? categories[ownProps.match.params['categoryId']] : 'react'
     };
 }
   

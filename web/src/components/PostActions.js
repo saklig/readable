@@ -21,7 +21,7 @@ class PostActions extends Component {
         const { post, addVote, removeVote, removePost} = this.props;
         return (
             <div className="pull-right">
-                <Link className="btn btn-primary m-r-10" to={{ pathname: `/posts/detail/${post.id}`, post: post}}>View</Link>
+                <Link className="btn btn-primary m-r-10" to={{ pathname: `/${post.category}/${post.id}`, post: post}}>View</Link>
 
                 <Link className="btn btn-primary m-r-10" to={{ pathname: `/posts/edit/${post.id}`, post: post}}>Edit</Link>
 

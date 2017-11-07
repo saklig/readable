@@ -35,13 +35,13 @@ class App extends Component {
                     <div className="container-fluid">
                         <Route exact path="/" component={DefaultView} />
 
+                        <Route exact path="/posts/new/post" component={EditPostView} />
+                        
                         <Route exact path="/:categoryId" component={CategoryView} />
-
-                        <Route exact path="/posts/new" component={EditPostView} />
 
                         <Route exact path="/posts/edit/:postId" component={EditPostView} />
 
-                        <Route exact path="/posts/detail/:postId" component={PostDetailView} />
+                        <Route exact path="/:categoryId/:postId" component={PostDetailView} />
 
                         <Route exact path="/comment/edit/:commentId" component={EditCommentView} />
                     </div>

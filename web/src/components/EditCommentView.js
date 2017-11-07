@@ -66,11 +66,11 @@ class EditCommentView extends Component {
     }
 
     render() {
-        const { comment, isCommentUpdated } = this.props;
+        const { comment, isCommentUpdated, post } = this.props;
 
         if (isCommentUpdated) {
             return (
-                <Redirect to={{pathname: `/posts/detail/${comment.parentId}` }} />
+                <Redirect to={{pathname: `/${post.category}/${comment.parentId}` }} />
             );
         }
 

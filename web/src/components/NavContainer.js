@@ -33,7 +33,7 @@ class NavContainer extends Component {
                                 </li>
 
                                 <li className="has-submenu">
-                                    <Link to='/posts/new'>
+                                    <Link to='/posts/new/post'>
                                         <i className="ti-plus" />New post
                                     </Link>
                                 </li>
