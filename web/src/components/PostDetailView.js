@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import PostContainer from './PostContainer';
 import CommentList from './CommentList';
+import ErrorView from './ErrorView';
 
 class PostDetailView extends Component {
     static propTypes = {
@@ -16,12 +16,16 @@ class PostDetailView extends Component {
     }
 
     render() {
-        const {post} = this.props;
+        const { post, postsLoaded } = this.props;
+
+        if (!postsLoaded){
+            return null;
+        }
 
         if (!post.id){
-            return (
-                <Redirect to={{pathname: '/'}} />
-            );
+            return (<ErrorView
+                errorMessage={'The post you tried to access could not be found'}
+            />);
         }
 
         return (
@@ -42,7 +46,8 @@ function mapStateToProps ({posts}, ownProps) {
     return {
         post: {
             ...posts.list[ownProps.match.params['postId']]
-        }
+        },
+        postsLoaded: posts.postsLoaded
     };
 }
   

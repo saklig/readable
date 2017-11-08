@@ -12,8 +12,8 @@ const initialPostState = {
             voteScore: 1,
             deleted: false
         }
-    }
-
+    },
+    postsLoaded: false
 };
 
 function posts (state = initialPostState, action){
@@ -70,7 +70,8 @@ function posts (state = initialPostState, action){
             ...state,
             list: {
                 ...action.posts
-            }
+            },
+            postsLoaded: true
         };
     case REQUEST_POST:
         return {
