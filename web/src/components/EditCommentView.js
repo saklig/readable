@@ -19,11 +19,6 @@ class EditCommentView extends Component {
         addComment: PropTypes.func.isRequired
     }
 
-    constructor(props) {
-        super(props);
-        this.state = { };
-    }
-
     componentDidMount(){
         const { resetForm, commentId, fetchComment, comment } = this.props;
         if(commentId && !comment.id){
@@ -61,8 +56,6 @@ class EditCommentView extends Component {
                 parentDeleted: false
             }});
         }
-
-
     }
 
     render() {

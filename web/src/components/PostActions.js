@@ -12,11 +12,6 @@ class PostActions extends Component {
         removePost: PropTypes.func.isRequired
     }
 
-    constructor(props) {
-        super(props);
-        this.state = { };
-    }
-
     render() {
         const { post, addVote, removeVote, removePost} = this.props;
         return (

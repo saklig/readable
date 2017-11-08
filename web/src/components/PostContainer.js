@@ -12,11 +12,6 @@ class PostContainer extends Component {
         fetchComments: PropTypes.func.isRequired
     }
 
-    constructor(props) {
-        super(props);
-        this.state = { };
-    }
-
     componentDidMount(){
         const { fetchComments, post } = this.props;
         fetchComments(post.id);

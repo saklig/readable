@@ -21,11 +21,6 @@ class EditPostView extends Component {
         updatePost: PropTypes.func.isRequired
     }
 
-    constructor(props) {
-        super(props);
-        this.state = { };
-    }
-
     componentDidMount(){
         const { resetForm, postId, fetchPost, post } = this.props;
         if(postId && !post.id){

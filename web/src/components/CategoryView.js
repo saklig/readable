@@ -10,11 +10,6 @@ class CategoryOverview extends Component {
         cat: PropTypes.object.isRequired
     }
 
-    constructor(props) {
-        super(props);
-        this.state = { };
-    }
-
     render() {
         const { cat } = this.props;
 
@@ -37,9 +32,5 @@ function mapStateToProps ({ categories }, ownProps) {
         cat: ownProps.cat ? ownProps.cat : categories[ownProps.match.params['categoryId']]
     };
 }
-  
-function mapDispatchToProps (dispatch) {
-    return { };
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryOverview);
+export default connect(mapStateToProps, null)(CategoryOverview);

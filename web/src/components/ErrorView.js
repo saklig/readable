@@ -7,11 +7,6 @@ class ErrorView extends Component {
         errorMessage: PropTypes.string.isRequired
     }
 
-    constructor(props) {
-        super(props);
-        this.state = { };
-    }
-
     render() {
         return (
             <div>

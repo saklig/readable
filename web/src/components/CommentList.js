@@ -12,11 +12,6 @@ class CommentList extends Component {
         fetchComments: PropTypes.func.isRequired
     }
 
-    constructor(props) {
-        super(props);
-        this.state = { };
-    }
-
     componentDidMount(){
         this.props.fetchComments(this.props.post.id);
     }

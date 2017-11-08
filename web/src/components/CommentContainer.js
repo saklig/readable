@@ -13,11 +13,6 @@ class CommentContainer extends Component {
         handleCommentRemoveVote: PropTypes.func.isRequired
     }
 
-    constructor(props) {
-        super(props);
-        this.state = { };
-    }
-
     render() {
         const { comment, handleRemoveComment, handleCommentAddVote, handleCommentRemoveVote } = this.props;
         return (

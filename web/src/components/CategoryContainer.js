@@ -10,11 +10,6 @@ class CategoryContainer extends Component {
         sortBy: PropTypes.string.isRequired
     }
 
-    constructor(props) {
-        super(props);
-        this.state = { };
-    }
-
     render() {
         const { cat, posts, sortBy } = this.props;
 
@@ -47,9 +42,5 @@ function mapStateToProps ({ posts, categories, sortBy }, ownProps) {
         cat: ownProps.cat ? ownProps.cat : ownProps.match ? categories[ownProps.match.params['categoryId']] : 'react'
     };
 }
-  
-function mapDispatchToProps (dispatch) {
-    return { };
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryContainer);
+export default connect(mapStateToProps, null)(CategoryContainer);

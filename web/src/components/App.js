@@ -16,11 +16,6 @@ class App extends Component {
         fetchPosts: PropTypes.func.isRequired
     }
 
-    constructor(props) {
-        super(props);
-        this.state = { };
-    }
-
     componentDidMount(){
         this.props.fetchPosts();
     }
@@ -53,21 +48,14 @@ class App extends Component {
         );
     }
 }
-
-function mapStateToProps (state, ownProps) {
-    return {
-
-    };
-}
   
 function mapDispatchToProps (dispatch) {
-    const returnObj = {
+    return {
         fetchPosts: () => dispatch(fetchPosts())
     };
-    return returnObj;
 }
 
 export default withRouter(connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 )(App));

@@ -9,11 +9,6 @@ class SortingContainer extends Component {
         changeSorting: PropTypes.func.isRequired
     }
 
-    constructor(props) {
-        super(props);
-        this.state = { };
-    }
-
     handleSortChange = (event) => {
         this.props.changeSorting(event.target.value);
     }

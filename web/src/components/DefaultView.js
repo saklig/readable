@@ -12,11 +12,6 @@ class PostOverview extends Component {
         resetForm: PropTypes.func.isRequired
     }
 
-    constructor(props) {
-        super(props);
-        this.state = { };
-    }
-
     componentDidMount(){
         const { resetForm } = this.props;
         resetForm();

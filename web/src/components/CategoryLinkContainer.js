@@ -8,11 +8,6 @@ class CategoryLinkContainer extends Component {
         categories: PropTypes.array.isRequired
     }
 
-    constructor(props) {
-        super(props);
-        this.state = { };
-    }
-
     render() {
         const { categories } = this.props;
         return (
@@ -38,9 +33,5 @@ function mapStateToProps ({ categories }, ownProps) {
         }, [])
     };
 }
-  
-function mapDispatchToProps (dispatch) {
-    return { };
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryLinkContainer);
+export default connect(mapStateToProps, null)(CategoryLinkContainer);

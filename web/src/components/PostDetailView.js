@@ -10,11 +10,6 @@ class PostDetailView extends Component {
         post: PropTypes.object.isRequired
     }
 
-    constructor(props) {
-        super(props);
-        this.state = { };
-    }
-
     render() {
         const { post, postsLoaded } = this.props;
 
@@ -50,9 +45,5 @@ function mapStateToProps ({posts}, ownProps) {
         postsLoaded: posts.postsLoaded
     };
 }
-  
-function mapDispatchToProps (dispatch) {
-    return { };
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostDetailView);
+export default connect(mapStateToProps, null)(PostDetailView);
